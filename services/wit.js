@@ -64,8 +64,6 @@ var actions = {
 		if(yes_no){
 			context.yes_no = yes_no
 		}
-
-
 		
 		cb(context)
 	},
@@ -84,9 +82,9 @@ var actions = {
 
 	// list of functions Wit.ai can execute
 	['getMenu'](sessionId, context, cb, entities) {
-		if(context.yes_no==='yes'){
+		
 			context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
-		}
+		
 		
 		cb(context)
 	},
