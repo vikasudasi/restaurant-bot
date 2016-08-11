@@ -140,7 +140,7 @@ var actions = {
 
 	
 
-	['getOrderSummery'](sessionId, context, cb) {
+	['getOrderSummary'](sessionId, context, cb) {
 		
 		if (context.food_items_cart) {
 			context.order_summary=context.food_items_cart
