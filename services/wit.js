@@ -104,14 +104,15 @@ var actions = {
 	},
 
 	['addItemsToCart'](sessionId, context, cb) {
-		
+		var item ={item:context.food_item}
+		console.log("new item to add"+json.stringify(item));
+		}
 		if (context.food_item) {
 			if(context.food_items_cart){
-				context.food_items_cart[context.food_item] = context.food_item;	
-					
+				context.food_items_cart[context.food_item] = item;	
 			}else{
 				context.food_items_cart ={}
-				context.food_items_cart[context.food_item] = context.food_item	
+				context.food_items_cart[context.food_item] = item;	
 			}
 		}
 		cb(context)
