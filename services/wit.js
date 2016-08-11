@@ -60,11 +60,10 @@ var actions = {
 			console.log("new food item"+ context.food_item);
 		}
 
-		var show_menu_yes_no = firstEntityValue(entities, 'menu_yes_no')
-		if (show_menu_yes_no === 'yes') {
-			context.menu_yes_no = show_menu_yes_no
+		var yes_no = firstEntityValue(entities, 'yes_no')
+		if(yes_no){
+			context.yes_no = yes_no
 		}
-
 
 
 		
@@ -85,9 +84,9 @@ var actions = {
 
 	// list of functions Wit.ai can execute
 	['getMenu'](sessionId, context, cb, entities) {
-		if(context.menu_yes_no==='yes'){
+		if(context.yes_no==='yes'){
 			context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
-			context.menu_yes_no='no'
+			context.yes_no='no'
 		}
 		
 		cb(context)
