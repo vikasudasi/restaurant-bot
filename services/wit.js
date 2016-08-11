@@ -59,8 +59,8 @@ var actions = {
 		}
 
 		var show_menu_yes_no = firstEntityValue(entities, 'yes_no')
-		if (yes_no === 'yes') {
-			context.yes_no = yes_no
+		if (show_menu_yes_no === 'yes') {
+			context.yes_no = show_menu_yes_no
 		}
 
 
