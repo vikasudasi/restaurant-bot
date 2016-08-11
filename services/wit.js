@@ -106,7 +106,7 @@ var actions = {
 	['addItemsToCart'](sessionId, context, cb) {
 		var item ={item:context.food_item}
 		
-		console.log("new item to add"+json.stringify(item));
+		console.log("new item to add"+JSON.stringify(item));
 		if (context.food_item) {
 			if(context.food_items_cart){
 				context.food_items_cart[context.food_item] = item;	
