@@ -82,6 +82,7 @@ var actions = {
 
 	// list of functions Wit.ai can execute
 	['getMenu'](sessionId, context, cb, entities) {
+		
 			context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
 		
 		
@@ -94,7 +95,7 @@ var actions = {
 		console.log("context: "+JSON.stringify(context));
 		
 		if (context['menu_type']) {
-
+		
 			context.submenu_items = getMenu(context.menu_type)
 			
 		}
@@ -103,37 +104,25 @@ var actions = {
 
 	['addItemsToCart'](sessionId, context, cb) {
 		var item ={item:context.food_item}
-		var result=[];
-		arr.forEach(function(o){
-			o.forEach(function(data){
-				{
-					item.forEach(function(itemdata){
-						if (data.product.replace(/\s/g, "") == item.replace(/\s/g, "")){
-							result.push(data);
-						}
-					});
-				}
-			});
-		});
+		
 		console.log("new item to add"+JSON.stringify(item));
-		if (result.length>1) {
+		if (context.food_item) {
+			
 			if(context.food_items_cart){
-				context.food_items_cart.push(result);		
+				context.food_items_cart[context.food_item] = item;	
 			}else{
-				context.food_items_cart =[]
-				context.food_items_cart.push(result);	
+				context.food_items_cart ={}
+				context.food_items_cart[context.food_item] = item;	
 			}
 		}
 		cb(context)
 	},
-
-
 	['removeItemFromCart'](sessionId, context, cb) {
 		
 		if (context.remove_item) {
 			if(context.food_items_cart[context.remove_item]){
 				delete context.food_items_cart[context.remove_item]
-
+					
 			}
 		}
 		cb(context)
@@ -141,9 +130,9 @@ var actions = {
 	['removeCart'](sessionId, context, cb) {
 		
 		if (context.food_items_cart) {
-			if(context.food_items_cart){
-			  context.food_items_cart={}
-
+			if(context.food_items_cart[context.remove_item]){
+				delete context[food_items_cart]
+					
 			}
 		}
 		cb(context)
@@ -161,15 +150,9 @@ var actions = {
 	},
 
 	['confirmOrder'](sessionId, context,cb) {
-		var totalAmount=0;
-		if (context.food_items_cart) {
-			context.food_items_cart.forEach(function(o){
-				totalAmount= totalAmount+o.price;
-			});
-			
-		}
-		context.total_amount=totalAmount		
-		cb(context)
+		
+			context.total_amount='500'			
+			cb(context)
 	},
 
 	['distroySession'](sessionId, context, cb){
@@ -281,7 +264,7 @@ var menu = {
 	}
 	],
 	Japanese:[
-	{
+		{
 		product:'Sushi',
 		price:100
 	},{
@@ -302,7 +285,7 @@ var menu = {
 	}
 	],
 	Indian:[
-	{
+		{
 		product:'Amritsari fish',
 		price:100
 	},{
@@ -320,7 +303,7 @@ var menu = {
 	}
 	],
 	Spanish:[
-	{
+		{
 		product:'Escabeche',
 		price:100
 	},{
@@ -362,4 +345,3 @@ var menu = {
 	}
 	]
 }
-
