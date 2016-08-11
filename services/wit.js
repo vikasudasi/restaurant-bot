@@ -107,7 +107,7 @@ var actions = {
 		
 		console.log("new item to add"+JSON.stringify(item));
 		if (context.food_item) {
-			context.menu_yes_no='no'
+			
 			if(context.food_items_cart){
 				context.food_items_cart[context.food_item] = item;	
 			}else{
