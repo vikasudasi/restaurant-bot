@@ -75,7 +75,7 @@ var actions = {
 	
 
 	['getGreetings'](sessionId, context, cb) {
-		context.greeting_response = 'I am fine, Would you like to order some food?'
+		context.greeting_response = 'Hey :), Would you like to order some food?'
 		cb(context)
 	},
 
