@@ -86,7 +86,6 @@ var actions = {
 	['getMenu'](sessionId, context, cb, entities) {
 		if(context.yes_no==='yes'){
 			context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
-			context.yes_no='no'
 		}
 		
 		cb(context)
