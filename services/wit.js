@@ -7,6 +7,7 @@ var request = require('request')
 
 
 var firstEntityValue = function (entities, entity) {
+	console.log("entities for entity"+entity+":  "+JSON.stringify(entities[entity]))
 	var val = entities && entities[entity] &&
 	Array.isArray(entities[entity]) &&
 	entities[entity].length > 0 &&
@@ -56,6 +57,7 @@ var actions = {
 		var food_item = firstEntityValue(entities, 'food_item')
 		if (food_item) {
 			context.food_item = food_item
+			console.log("new food item"+ context.food_item);
 		}
 
 		var show_menu_yes_no = firstEntityValue(entities, 'yes_no')
