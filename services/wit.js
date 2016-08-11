@@ -58,6 +58,11 @@ var actions = {
 			context.food_item = food_item
 		}
 
+		var show_menu_yes_no = firstEntityValue(entities, 'yes_no')
+		if (yes_no === 'yes') {
+			context.yes_no = yes_no
+		}
+
 
 
 		
@@ -78,9 +83,10 @@ var actions = {
 
 	// list of functions Wit.ai can execute
 	['getMenu'](sessionId, context, cb, entities) {
-
-		context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
-
+		if(context.yes_no){
+			context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
+		}
+		
 		cb(context)
 	},
 
@@ -101,11 +107,31 @@ var actions = {
 		
 		if (context.food_item) {
 			if(context.food_items_cart){
-				//context.food_items_cart[context.food_items_cart.length-1] = context.food_item;	
-				context.food_items_cart = ','+ context.food_item	
+				context.food_items_cart[context.food_item] = context.food_item;	
+					
 			}else{
-				//context.food_items_cart = {}
-				context.food_items_cart = context.food_item	
+				context.food_items_cart ={}
+				context.food_items_cart[context.food_item] = context.food_item	
+			}
+		}
+		cb(context)
+	},
+	['removeItemFromCart'](sessionId, context, cb) {
+		
+		if (context.remove_item) {
+			if(context.food_items_cart[context.remove_item]){
+				delete context.food_items_cart[context.remove_item]
+					
+			}
+		}
+		cb(context)
+	},
+	['removeCart'](sessionId, context, cb) {
+		
+		if (context.food_items_cart) {
+			if(context.food_items_cart[context.remove_item]){
+				delete context[food_items_cart]
+					
 			}
 		}
 		cb(context)
@@ -116,7 +142,8 @@ var actions = {
 	['getOrderSummery'](sessionId, context, cb) {
 		
 		if (context.food_items_cart) {
-				context.order_summary=context.food_items_cart			
+			context.order_summary=context.food_items_cart
+			
 		}
 		cb(context)
 	},
@@ -128,9 +155,9 @@ var actions = {
 	},
 
 	['distroySession'](sessionId, context, cb){
-		context = {};
-		
+		context = {}
 	},
+
 	['fetch-pics'](sessionId, context, cb) {
 		var wantedPics = allPics[context.cat || 'default']
 		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
@@ -173,15 +200,15 @@ var getWeather = function (location) {
 
 var getMenu = function(Type){
 	if(Type.toLowerCase() === 'Chinese'.toLowerCase()){
-		return 'Chow mein,Dim sum,Jiaozi, Ramen, Lo mein';
+		return menu['Chinese'];
 	}if(Type.toLowerCase() === 'Japanese'.toLowerCase()){
-		return 'Sushi, Tempura, Sukiyaki, Ramen, Curry rice, Tonkatsu';
+		return menu['Japanese'];
 	}if(Type.toLowerCase() === 'Indian'.toLowerCase()){
-		return 'Amritsari fish, Baati, Amritsari kulcha, Biryani, Butter chicken';
+		return  menu['Indian'];
 	}if(Type.toLowerCase() === 'Spanish'.toLowerCase()){
-		return 'Escabeche, Gachas, Merienda, Paella';
+		return menu['Spanish'];
 	}if(Type.toLowerCase() === 'American'.toLowerCase()){
-		return 'Bread, Barbecue, Blue Cheese Dressing, Brunswick Stew, Buffalo Burger, Buffalo Wing, Burnt Ends, Chicken And Waffles';
+		return  menu['American'];
 	}
 	return '';
 }
@@ -216,3 +243,104 @@ var allPics = {
 	'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
 	],
 };
+
+var menu = {
+	Chinese:[{
+		product:'Chow mein',
+		price:100
+	},{
+		product:'Dim sum',
+		price:150
+	},{
+		product:'Jiaozi',
+		price:120
+	},{
+		product:'Ramen',
+		price:80
+	},{
+		product:'Lo mein',
+		price:150
+	}
+	],
+	Japanese:[
+		{
+		product:'Sushi',
+		price:100
+	},{
+		product:'Tempura',
+		price:150
+	},{
+		product:'Sukiyaki',
+		price:120
+	},{
+		product:'Ramen',
+		price:80
+	},{
+		product:'Tonkatsu',
+		price:80
+	},{
+		product:'Curry rice',
+		price:150
+	}
+	],
+	Indian:[
+		{
+		product:'Amritsari fish',
+		price:100
+	},{
+		product:'Baati',
+		price:150
+	},{
+		product:'Amritsari kulcha',
+		price:120
+	},{
+		product:'Biryani',
+		price:80
+	},{
+		product:'Butter chicken',
+		price:80
+	}
+	],
+	Spanish:[
+		{
+		product:'Escabeche',
+		price:100
+	},{
+		product:'Gachas',
+		price:150
+	},{
+		product:'Merienda',
+		price:120
+	},{
+		product:'Paella',
+		price:80
+	}
+	],
+	American:[
+	{
+		product:'Bread',
+		price:100
+	},{
+		product:'Barbecue',
+		price:150
+	},{
+		product:'Blue Cheese Dressing',
+		price:120
+	},{
+		product:'Brunswick Stew',
+		price:80
+	},{
+		product:'Buffalo Burger',
+		price:100
+	},{
+		product:'Buffalo Wing',
+		price:150
+	},{
+		product:'Burnt Ends',
+		price:120
+	},{
+		product:'Chicken And Waffles',
+		price:80
+	}
+	]
+}
