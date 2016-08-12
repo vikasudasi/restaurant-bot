@@ -160,9 +160,8 @@ var actions = {
 	},
 
 	['fetch-pics'](sessionId, context, cb) {
-		var wantedPics = allPics[context.cat || 'default']
+		var wantedPics = allPics['corgis']
 		context.pics = wantedPics[Math.floor(Math.random() * wantedPics.length)]
-
 		cb(context)
 	}
 }
