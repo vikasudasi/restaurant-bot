@@ -34,7 +34,7 @@ var actions = {
 
 		if (message.includes("image_url")) {
 			console.log("checkURL true"+JSON.stringify(message));
-			FB.newMessage(context._fbid_, message, true)
+			FB.newMessage(context._fbid_, context.menuitems, true)
 		} else {
 
 			console.log("checkURL false"+JSON.stringify(message));
