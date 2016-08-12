@@ -45,7 +45,7 @@ app.post('/webhooks', function (req, res) {
       console.log("Entry Object: "+JSON.stringify(entry))
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-        console.log("reply for fb":JSON.stringify(reply));
+        console.log("reply for fb"+JSON.stringify(reply));
         FB.newMessage(sender, reply)
       })
     }
