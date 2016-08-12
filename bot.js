@@ -48,7 +48,7 @@ var read = function (sender, message, reply) {
 		// Let's reply back hello
 		message = 'Hello yourself! I am a chat bot."'
 		reply(sender, message)
-	}else if(message ==='exit'){
+	}else if(message ==='exit' || message ==='Exit' || message ==='quit' || message ==='Quit'){
 		removeSession(sender);
 			message = 'Your Session has been closed'
 		reply(sender, message)

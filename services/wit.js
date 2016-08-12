@@ -33,8 +33,11 @@ var actions = {
 		console.log('WIT HAS A CONTEXT:', context)
 
 		if (checkURL(message)) {
+			console.log("checkURL true"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, message, true)
 		} else {
+
+			console.log("checkURL false"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, message)
 		}
 
