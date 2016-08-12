@@ -19,6 +19,8 @@ var firstEntityValue = function (entities, entity) {
 	return typeof val === 'object' ? val.value : val
 }
 
+var isMenuImagesSent;
+
 
 var actions = {
 	say (sessionId, context, message, cb) {
@@ -32,10 +34,10 @@ var actions = {
 		console.log('WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT HAS A CONTEXT:', context)
 
-		if (context.isMenuImagesSent) {
-			context.isMenuImagesSent=false;
+		if (isMenuImagesSent) {
 			console.log("checkURL true"+JSON.stringify(message));
-			FB.newMessage(context._fbid_, context.menuitems, true)
+			FB.newMessage(context._fbid_, context.menuitems, true);
+			isMenuImagesSent=false;
 		} else {
 
 			console.log("checkURL false"+JSON.stringify(message));
@@ -89,7 +91,7 @@ var actions = {
 		
 			//context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
 			context.menuitems=menu_format;
-			context.isMenuImagesSent=true;
+			isMenuImagesSent=true;
 		
 		
 		cb(context)
