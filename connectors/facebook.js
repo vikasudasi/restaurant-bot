@@ -64,9 +64,10 @@ var newMessage = function (recipientId, msg, atts, cb) {
 	
 
 	if (atts) {
-		msg=JSON.parse(msg);
-		console.log("Message Object:" +msg);
+
 		
+		console.log("Message Object:" +msg);
+
 		var message = {
 			attachment: {
 				"type": "template",
