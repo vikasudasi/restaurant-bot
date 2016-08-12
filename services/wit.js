@@ -20,6 +20,7 @@ var firstEntityValue = function (entities, entity) {
 }
 
 var isMenuImagesSent;
+var isSubMenuImageSent;
 
 
 var actions = {
@@ -38,7 +39,13 @@ var actions = {
 			console.log("checkURL true"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, context.menuitems, true);
 			isMenuImagesSent=false;
-		} else {
+		}else if(isSubMenuImageSent)
+		{
+			console.log("checkURL true"+JSON.stringify(message));
+			FB.newMessage(context._fbid_, context.submenu_items, true);
+			isSubMenuImageSent=false;
+		}
+		else {
 
 			console.log("checkURL false"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, message)
@@ -107,6 +114,7 @@ var actions = {
 			context.submenu_items = getMenu(context.menu_type)
 			
 		}
+		isSubMenuImageSent=true;
 		cb(context)
 	},
 
@@ -282,101 +290,131 @@ var menu_format=[
 
 var menu = {
 	Chinese:[{
-		product:'Chow mein',
-		price:100
+		"title":'Chow mein',
+		"subtitle":100,
+		"image_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/34/77/5f/jack-s-chinese-restaurant.jpg"	
+
 	},{
-		product:'Dim sum',
-		price:150
+		"title":'Dim sum',
+		"subtitle":150,
+		"image_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/34/77/5f/jack-s-chinese-restaurant.jpg"	
+
 	},{
-		product:'Jiaozi',
-		price:120
+		"title":'Jiaozi',
+		"subtitle":120,
+		"image_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/34/77/5f/jack-s-chinese-restaurant.jpg"
 	},{
-		product:'Ramen',
-		price:80
+		"title":'Ramen',
+		"subtitle":80,
+		"image_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/34/77/5f/jack-s-chinese-restaurant.jpg"
 	},{
-		product:'Lo mein',
-		price:150
+		"title":'Lo mein',
+		"subtitle":150,
+		"image_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/34/77/5f/jack-s-chinese-restaurant.jpg"
 	}
 	],
 	Japanese:[
 		{
-		product:'Sushi',
-		price:100
+		"title":'Sushi',
+		"subtitle":100,
+		"image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"
 	},{
-		product:'Tempura',
-		price:150
+		"title":'Tempura',
+		"subtitle":150,
+		"image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"
 	},{
-		product:'Sukiyaki',
-		price:120
+		"title":'Sukiyaki',
+		"subtitle":120,
+		"image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"
 	},{
-		product:'Ramen',
-		price:80
+		"title":'Ramen',
+		"subtitle":80,
+		"image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"
 	},{
-		product:'Tonkatsu',
-		price:80
+		"title":'Tonkatsu',
+		"subtitle":80,
+		"image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"
 	},{
-		product:'Curry rice',
-		price:150
+		"title":'Curry rice',
+		"subtitle":150,
+		"image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"
 	}
 	],
 	Indian:[
 		{
-		product:'Amritsari fish',
-		price:100
+		"title":'Amritsari fish',
+		"subtitle":100,
+		 "image_url": "http://topholidays.net/wp-content/uploads/2014/04/indian-food.jpg"
 	},{
-		product:'Baati',
-		price:150
+		"title":'Baati',
+		"subtitle":150,
+		 "image_url": "http://topholidays.net/wp-content/uploads/2014/04/indian-food.jpg"
 	},{
-		product:'Amritsari kulcha',
-		price:120
+		"title":'Amritsari kulcha',
+		"subtitle":120,
+		 "image_url": "http://topholidays.net/wp-content/uploads/2014/04/indian-food.jpg"
 	},{
-		product:'Biryani',
-		price:80
+		"title":'Biryani',
+		"subtitle":80,
+		 "image_url": "http://topholidays.net/wp-content/uploads/2014/04/indian-food.jpg"
 	},{
-		product:'Butter chicken',
-		price:80
+		"title":'Butter chicken',
+		"subtitle":80,
+		"image_url": "http://topholidays.net/wp-content/uploads/2014/04/indian-food.jpg"
 	}
 	],
 	Spanish:[
 		{
-		product:'Escabeche',
-		price:100
+		"title":'Escabeche',
+		"subtitle":100,
+		"image_url": "http://www1.expatica.com/upload/casey/ESfood1c.jpg"
 	},{
-		product:'Gachas',
-		price:150
+		"title":'Gachas',
+		"subtitle":150,
+		"image_url": "http://www1.expatica.com/upload/casey/ESfood1c.jpg"
 	},{
-		product:'Merienda',
-		price:120
+		"title":'Merienda',
+		"subtitle":120,
+		"image_url": "http://www1.expatica.com/upload/casey/ESfood1c.jpg"
 	},{
-		product:'Paella',
-		price:80
+		"title":'Paella',
+		"subtitle":80,
+		"image_url": "http://www1.expatica.com/upload/casey/ESfood1c.jpg"
 	}
 	],
 	American:[
 	{
-		product:'Bread',
-		price:100
+		"title":'Bread',
+		"subtitle":100,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Barbecue',
-		price:150
+		"title":'Barbecue',
+		"subtitle":150,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Blue Cheese Dressing',
-		price:120
+		"title":'Blue Cheese Dressing',
+		"subtitle":120,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Brunswick Stew',
-		price:80
+		"title":'Brunswick Stew',
+		"subtitle":80,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Buffalo Burger',
-		price:100
+		"title":'Buffalo Burger',
+		"subtitle":100,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Buffalo Wing',
-		price:150
+		"title":'Buffalo Wing',
+		"subtitle":150,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Burnt Ends',
-		price:120
+		"title":'Burnt Ends',
+		"subtitle":120,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	},{
-		product:'Chicken And Waffles',
-		price:80
+		"title":'Chicken And Waffles',
+		"subtitle":80,
+		"image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"
 	}
 	]
 }
