@@ -61,12 +61,15 @@ var newMessage = function (recipientId, msg, atts, cb) {
 	//   }
 	// }
 
+	msg=JSON.parse(msg);
+
 	if (atts) {
 		var message = {
 			attachment: {
-				"type": "image",
+				"type": "template",
 				"payload": {
-					"url": msg
+					"template_type": "generic",
+					"elements":msg
 				}
 			}
 		}

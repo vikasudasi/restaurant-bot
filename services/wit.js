@@ -32,7 +32,7 @@ var actions = {
 		console.log('WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT HAS A CONTEXT:', context)
 
-		if (checkURL(message)) {
+		if (message.includes("image_url")) {
 			console.log("checkURL true"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, message, true)
 		} else {
@@ -86,7 +86,8 @@ var actions = {
 	// list of functions Wit.ai can execute
 	['getMenu'](sessionId, context, cb, entities) {
 		
-			context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
+			//context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
+			context.menuitems=menu_format;
 		
 		
 		cb(context)
@@ -246,6 +247,34 @@ var allPics = {
 	'http://blog.uprinting.com/wp-content/uploads/2011/09/Cute-Baby-Pictures-29.jpg',
 	],
 };
+
+var menu_format=[
+{
+	"title": "Chinese",
+    "subtitle": "Element #1 of an hscroll",
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+},
+{
+	"title": "Japanese",
+    "subtitle": "Element #1 of an hscroll",
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+},
+{
+	"title": "Indian",
+    "subtitle": "Element #1 of an hscroll",
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+},
+{
+	"title": "Spanish",
+    "subtitle": "Element #1 of an hscroll",
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+},
+{
+	"title": "American",
+    "subtitle": "Element #1 of an hscroll",
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+}
+]
 
 var menu = {
 	Chinese:[{
