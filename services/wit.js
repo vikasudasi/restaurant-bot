@@ -252,27 +252,27 @@ var menu_format=[
 {
 	"title": "Chinese",
     "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
 },
 {
 	"title": "Japanese",
     "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
 },
 {
 	"title": "Indian",
     "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
 },
 {
 	"title": "Spanish",
     "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
 },
 {
 	"title": "American",
     "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",	
+    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
 }
 ]
 
