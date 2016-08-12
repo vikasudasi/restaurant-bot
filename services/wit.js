@@ -32,9 +32,10 @@ var actions = {
 		console.log('WIT HAS SOMETHING TO SAY:', message)
 		console.log('WIT HAS A CONTEXT:', context)
 
-		if (message.includes("image_url")) {
+		if (context.isMenuImagesSent) {
 			console.log("checkURL true"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, context.menuitems, true)
+			context.isMenuImagesSent=false;
 		} else {
 
 			console.log("checkURL false"+JSON.stringify(message));
@@ -88,6 +89,7 @@ var actions = {
 		
 			//context.menuitems = 'Chinese, Japanese, Indian, Spanish, American'
 			context.menuitems=menu_format;
+			context.isMenuImagesSent=true;
 		
 		
 		cb(context)
@@ -251,28 +253,28 @@ var allPics = {
 var menu_format=[
 {
 	"title": "Chinese",
-    "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
+    "subtitle": "Please Type Chinese",
+    "image_url": "https://media-cdn.tripadvisor.com/media/photo-s/03/34/77/5f/jack-s-chinese-restaurant.jpg"	
 },
 {
 	"title": "Japanese",
-    "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
+    "subtitle": "Please Type Japanese",
+    "image_url": "https://www.whatsuplife.in/gurgaon/blog/wp-content/uploads/2015/01/japanese-food.jpg"	
 },
 {
 	"title": "Indian",
-    "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
+    "subtitle": "Please Type Indian",
+    "image_url": "http://topholidays.net/wp-content/uploads/2014/04/indian-food.jpg"	
 },
 {
 	"title": "Spanish",
-    "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
+    "subtitle": "Please Type Spanish",
+    "image_url": "http://www1.expatica.com/upload/casey/ESfood1c.jpg"	
 },
 {
 	"title": "American",
-    "subtitle": "Element #1 of an hscroll",
-    "image_url": "http://messengerdemo.parseapp.com/img/rift.png"	
+    "subtitle": "Please Type American",
+    "image_url": "http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg"	
 }
 ]
 
