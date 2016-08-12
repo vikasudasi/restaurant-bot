@@ -33,9 +33,9 @@ var actions = {
 		console.log('WIT HAS A CONTEXT:', context)
 
 		if (context.isMenuImagesSent) {
+			context.isMenuImagesSent=false;
 			console.log("checkURL true"+JSON.stringify(message));
 			FB.newMessage(context._fbid_, context.menuitems, true)
-			context.isMenuImagesSent=false;
 		} else {
 
 			console.log("checkURL false"+JSON.stringify(message));
